@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FootprintRecord } from '../../models/footprint-record';
+import { FootprintType } from '../../models/footprint-types';
 import '../../date-helpers.module';
 
 @Component({
@@ -25,26 +26,26 @@ import '../../date-helpers.module';
                     <td>
                         <h3><a href="#">{{child.childName}}</a></h3>
                     </td>
-                    <td><img [class.on] = child.getMorningRoutineFootState
+                    <td><img [class.on]="child.hasFootprint(getFpTypeMorningRoutine)"
                              src='app/assets/single_footprint_wh.png' 
                              alt='Morning routine'
-                             (click)="toggleFootprint(child, 'routine')" /></td>
-                    <td><img [class.on] = child.getChoresFootState
+                             (click)="child.toggleFootprint(getFpTypeMorningRoutine)" /></td>
+                    <td><img [class.on]="child.hasFootprint(getFpTypeChores)"
                              src='app/assets/single_footprint_wh.png' 
-                             alt='Chores'
-                             (click)="toggleFootprint(child, 'chores')" /></td>
-                    <td><img [class.on] = child.getPracticeFootState
+                             alt='Morning routine'
+                             (click)="child.toggleFootprint(getFpTypeChores)" /></td>
+                    <td><img [class.on]="child.hasFootprint(getFpTypePractice)"
                              src='app/assets/single_footprint_wh.png' 
-                             alt='Practice'
-                             (click)="toggleFootprint(child, 'practice')" /></td>
-                    <td><img [class.on] = child.getSchoolFootState
+                             alt='Morning routine'
+                             (click)="child.toggleFootprint(getFpTypePractice)" /></td>
+                    <td><img [class.on]="child.hasFootprint(getFpTypeSchool)"
                              src='app/assets/single_footprint_wh.png' 
-                             alt='School'
-                             (click)="toggleFootprint(child, 'school')" /></td>
-                    <td><img [class.on] = child.getBonusFootState
+                             alt='Morning routine'
+                             (click)="child.toggleFootprint(getFpTypeSchool)" /></td>
+                    <td><img [class.on]="child.hasFootprint(getFpTypeBonus)"
                              src='app/assets/single_footprint_wh.png' 
-                             alt='Bonus'
-                             (click)="toggleFootprint(child, 'bonus')" /></td>
+                             alt='Morning routine'
+                             (click)="child.toggleFootprint(getFpTypeBonus)" /></td>                    
                 </tr>
             </table></div>`,
 })
@@ -59,11 +60,9 @@ export class DateViewComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.children = [
-            { childName: 'Marli', date: new Date(Date.now()) },
-            { childName: 'Michelle', date: new Date(Date.now()) },
-            { childName: 'Ada', date: new Date(Date.now()) },
-            { childName: 'Amber', date: new Date(Date.now()) }
+        this.children = [ 
+            new FootprintRecord(null, 'Marli'),
+            new FootprintRecord(null, 'Michelle')
         ];
     }
 
@@ -95,20 +94,9 @@ export class DateViewComponent implements OnInit {
         this.currentDate = DateHelpers.GetNextDay(this.currentDate);
     }
 
-    toggleFootprint(child: FootprintRecord, code: string)
-    {
-        if (code === 'routine') {
-          child.isMorningRoutineFootOn = !child.isMorningRoutineFootOn;
-        } else if (code === 'chores') {
-          child.isChoresFootOn = !child.isChoresFootOn;
-        } else if (code === 'practice') {
-          child.isPracticeFootOn = !child.isPracticeFootOn;
-        } else if (code === 'school') {
-          child.isSchoolFootOn = !child.isSchoolFootOn;
-        } else if (code === 'bonus') {
-          child.isBonusFootOn = !child.isBonusFootOn;
-        } else {
-          throw 'InvalidFootprintCode';
-        }
-    }
+    getFpTypeMorningRoutine(): FootprintType { return FootprintType.MorningRoutine; }
+    getFpTypeChores(): FootprintType { return FootprintType.Chores; }
+    getFpTypePractice(): FootprintType { return FootprintType.Practice; }
+    getFpTypeSchool(): FootprintType { return FootprintType.School; }
+    getFpTypeBonus(): FootprintType { return FootprintType.Bonus; }
 }
