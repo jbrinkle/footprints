@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>Footprints</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,11 +15,32 @@
 
     <script src="systemjs.config.js"></script>
     <script>
-      System.import('app').catch(function(err){ console.error(err); });
+        System.import('app').catch(function(err) {
+            console.error(err);
+        });
     </script>
-  </head>
+</head>
 
-  <body>
-    <footprints>Loading app...</footprints>
-  </body>
+<body>
+    <header>
+        <div>
+            <img src='app/assets/footprint_base.png' alt='logo' />
+            <h1>Footprints</h1>
+        </div>
+    </header>
+
+    <main>
+        <footprints>
+            <div style='padding-top: 4em;'>Loading application data...</div>
+        </footprints>
+    </main>
+
+    <footer>
+        <div>
+            <span>Powered by:</span>
+            <img src='app/assets/brinkleLogo2014.png' alt='brinkle' />
+        </div>
+    </footer>
+</body>
+
 </html>

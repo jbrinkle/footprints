@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Footprints</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Polyfill(s) for older browsers -->
+    <!--<script src="node_modules/core-js/client/shim.min.js"></script>
+
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>-->
+
+    <!--<script src="systemjs.config.js"></script>
+    <script>
+      System.import('app').catch(function(err){ console.error(err); });
+    </script>-->
+</head>
+
+<body>
+    <!--<footprints>Loading app...</footprints>-->
+
+    <header>
+        <div>
+            <img src='app/assets/footprint_base.png' alt='logo' />
+            <h1>Footprints</h1>
+        </div>
+    </header>
+
+    <main>
+        <nav>
+            <button>Yesterday</button>
+            <h3>1/10/2017</h3>
+            <button>Tomorrow</button>
+        </nav>
+        <div>
+            <table>
+                <tr>
+                    <th></th>
+                    <th class='footCol'>Routine</th>
+                    <th class='footCol'>Chores</th>
+                    <th class='footCol'>Practice</th>
+                    <th class='footCol'>School</th>
+                    <th class='footCol'>Bonus</th>
+                </tr>
+                <tr class='entry'>
+                    <td>
+                        <h3><a href="#">Marli</a></h3>
+                    </td>
+                    <td><img src='app/assets/single_footprint_wh.png' alt='Morning routine' /></td>
+                    <td><img src='app/assets/single_footprint_wh.png' alt='Chores' /></td>
+                    <td><img class='on' src='app/assets/single_footprint_wh.png' alt='Practice' /></td>
+                    <td><img class='on' src='app/assets/single_footprint_wh.png' alt='School' /></td>
+                    <td><img src='app/assets/single_footprint_wh.png' alt='Bonus' /></td>
+                </tr>
+                <tr class='entry'>
+                    <td>
+                        <h3><a href="#">Michelle</a></h3>
+                    </td>
+                    <td><img src='app/assets/single_footprint_wh.png' alt='Morning routine' /></td>
+                    <td><img class='on' src='app/assets/single_footprint_wh.png' alt='Chores' /></td>
+                    <td><img src='app/assets/single_footprint_wh.png' alt='Practice' /></td>
+                    <td><img src='app/assets/single_footprint_wh.png' alt='School' /></td>
+                    <td><img class='on' src='app/assets/single_footprint_wh.png' alt='Bonus' /></td>
+                </tr>
+                <tr class='entry'>
+                    <td>
+                        <h3><a href="#">Ada</a></h3>
+                    </td>
+                    <td><img class='on' src='app/assets/single_footprint_wh.png' alt='Morning routine' /></td>
+                    <td><img src='app/assets/single_footprint_wh.png' alt='Chores' /></td>
+                    <td><img src='app/assets/single_footprint_wh.png' alt='Practice' /></td>
+                    <td><img src='app/assets/single_footprint_wh.png' alt='School' /></td>
+                    <td><img src='app/assets/single_footprint_wh.png' alt='Bonus' /></td>
+                </tr>
+                <tr class='entry'>
+                    <td>
+                        <h3><a href="#">Amber</a></h3>
+                    </td>
+                    <td><img class='on' src='app/assets/single_footprint_wh.png' alt='Morning routine' /></td>
+                    <td><img class='on' src='app/assets/single_footprint_wh.png' alt='Chores' /></td>
+                    <td><img src='app/assets/single_footprint_wh.png' alt='Practice' /></td>
+                    <td><img src='app/assets/single_footprint_wh.png' alt='School' /></td>
+                    <td><img src='app/assets/single_footprint_wh.png' alt='Bonus' /></td>
+                </tr>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <div>
+            <span>Powered by:</span>
+            <img src='app/assets/brinkleLogo2014.png' alt='brinkle' />
+        </div>
+    </footer>
+
+</body>
+
+</html>

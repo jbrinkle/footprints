@@ -1,7 +1,14 @@
 import { Component } from '@angular/core';
+import { DateViewComponent } from './components/date-view/date-view.component';
 
 @Component({
-  selector: 'my-app',
-  template: `<h1>Hello {{name}}</h1>`,
+  selector: 'footprints',
+  template: `<footprints-by-date *ngIf="showByDate"></footprints-by-date>`,
 })
-export class AppComponent  { name = 'Angular'; }
+export class AppComponent  {
+  showByDate: boolean;
+
+  constructor() {
+    this.showByDate = true;
+  }
+}
