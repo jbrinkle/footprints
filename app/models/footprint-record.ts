@@ -1,4 +1,5 @@
 import { FootprintType } from './footprint-types';
+import '../date-helpers.module';
 
 export class FootprintRecord {
     private footprints?: FootprintType[];
@@ -10,8 +11,8 @@ export class FootprintRecord {
         this.footprints = new Array();
         this.childName = name;
 
-        if (date == null) { 
-            this.recordDate = new Date((new Date(Date.now()).toDateString())); 
+        if (date == null) {
+            this.recordDate = DateHelpers.Today();
         } else {
             this.recordDate = new Date(date.toDateString());
         }

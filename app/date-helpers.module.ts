@@ -3,6 +3,10 @@ module DateHelpers {
     let shortDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     let shortMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
+    export function Today() {
+        return new Date((new Date(Date.now())).toDateString());
+    }
+
     export function GetFriendlyDateFormat(d: Date) {
         let day = shortDays[d.getDay()];
         let month = shortMonths[d.getMonth()];
@@ -11,7 +15,7 @@ module DateHelpers {
     }
 
     export function IsPast(d: Date) {
-        let today = new Date((new Date(Date.now())).toDateString());
+        let today = Today();
         let pval = new Date(d.toDateString());
         return (pval.valueOf() - today.valueOf()) < 0;
     }
@@ -24,7 +28,7 @@ module DateHelpers {
     }
 
     export function IsFuture(d: Date) {
-        let today = new Date((new Date(Date.now())).toDateString());
+        let today = Today();
         let pval = new Date(d.toDateString());
         return (pval.valueOf() - today.valueOf()) > 0;
     }
@@ -37,7 +41,7 @@ module DateHelpers {
     }
 
     export function GetRelativeLabelForDate(d: Date) {
-        let today = new Date((new Date(Date.now())).toDateString());
+        let today = Today();
         let pval = new Date(d.toDateString());
 
         let dayDiff = Math.floor((pval.valueOf() - today.valueOf()) / 86400000);

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FootprintService } from '../../services/footprint.service';
 import { FootprintRecord } from '../../models/footprint-record';
 import { FootprintType } from '../../models/footprint-types';
 import '../../date-helpers.module';
@@ -54,16 +55,13 @@ export class DateViewComponent implements OnInit {
 
     private currentDate: Date;
 
-    constructor()
+    constructor(private footprintService: FootprintService)
     {
-        this.currentDate = new Date((new Date(Date.now())).toDateString());
+        this.currentDate = DateHelpers.Today();
     }
 
     ngOnInit() {
-        this.children = [ 
-            new FootprintRecord(null, 'Marli'),
-            new FootprintRecord(null, 'Michelle')
-        ];
+        this.refreshRecords();
     }
 
     getPrevButtonText(): String {
@@ -88,10 +86,12 @@ export class DateViewComponent implements OnInit {
 
     goToPreviousDate(): void {
         this.currentDate = DateHelpers.GetPreviousDay(this.currentDate);
+        this.refreshRecords();
     }
 
     goToNextDate(): void {
         this.currentDate = DateHelpers.GetNextDay(this.currentDate);
+        this.refreshRecords();
     }
 
     getFpTypeMorningRoutine(): FootprintType { return FootprintType.MorningRoutine; }
@@ -99,4 +99,11 @@ export class DateViewComponent implements OnInit {
     getFpTypePractice(): FootprintType { return FootprintType.Practice; }
     getFpTypeSchool(): FootprintType { return FootprintType.School; }
     getFpTypeBonus(): FootprintType { return FootprintType.Bonus; }
+
+    private refreshRecords(): void {
+        let promise = this.footprintService.getFootprintsForDate(this.currentDate);
+        if (promise !== undefined) {
+            promise.then(records => this.children = records);
+        }
+    }
 }
